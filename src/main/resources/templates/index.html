@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Ferreteria MAX - Inicio</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-warning">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark" href="/">
+            <i class="bi bi-tools"></i> Ferreteria MAX
+        </a>
+        <span class="text-dark small">GA7-220501096-AA3-EV01 | Spring Boot</span>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold">Sistema de Gestion</h1>
+        <p class="lead text-muted">Ferreteria MAX &mdash; Modulo Web con Spring Boot + Thymeleaf</p>
+    </div>
+
+    <div class="row justify-content-center g-4">
+        <!-- Tarjeta Productos -->
+        <div class="col-md-5">
+            <div class="card shadow h-100">
+                <div class="card-body text-center py-4">
+                    <i class="bi bi-box-seam text-warning" style="font-size:3rem;"></i>
+                    <h3 class="card-title mt-3">Productos</h3>
+                    <p class="card-text text-muted">Gestiona el catalogo de productos de la ferreteria.</p>
+                    <a th:href="@{/productos}" class="btn btn-warning btn-lg mt-2">
+                        <i class="bi bi-arrow-right-circle"></i> Ir a Productos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta Usuarios -->
+        <div class="col-md-5">
+            <div class="card shadow h-100">
+                <div class="card-body text-center py-4">
+                    <i class="bi bi-people text-primary" style="font-size:3rem;"></i>
+                    <h3 class="card-title mt-3">Usuarios</h3>
+                    <p class="card-text text-muted">Administra los usuarios registrados del sistema.</p>
+                    <a th:href="@{/usuarios}" class="btn btn-primary btn-lg mt-2">
+                        <i class="bi bi-arrow-right-circle"></i> Ir a Usuarios
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info tecnica -->
+    <div class="card mt-5 border-0 bg-white shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Tecnologias utilizadas</h5>
+            <ul class="list-unstyled mb-0 row">
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-success me-2"></i>Spring Boot 3.1</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-success me-2"></i>Spring MVC (Controladores)</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-success me-2"></i>Spring Data JPA + Hibernate</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-success me-2"></i>Thymeleaf (vistas)</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-success me-2"></i>MySQL (base de datos)</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-success me-2"></i>Bootstrap 5 (UI)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center text-muted small mt-5 pb-3">
+    Evidencia GA7-220501096-AA3-EV01 &bull; Leonardo Herrera &bull; SENA 2026
+</footer>
+</body>
+</html>

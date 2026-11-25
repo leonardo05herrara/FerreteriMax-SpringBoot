@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="${titulo} + ' - Ferreteria MAX'">Producto</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-warning">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark" th:href="@{/}">
+            <i class="bi bi-tools"></i> Ferreteria MAX
+        </a>
+    </div>
+</nav>
+
+<div class="container mt-4" style="max-width:600px;">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark fw-bold">
+            <i class="bi bi-box-seam me-2"></i>
+            <span th:text="${titulo}">Producto</span>
+        </div>
+        <div class="card-body">
+
+            <!-- Formulario con metodo POST -->
+            <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+                <!-- Campo oculto con el ID (para actualizar) -->
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre *</label>
+                    <input type="text" class="form-control" th:field="*{nombre}"
+                           placeholder="Ej: Martillo carpintero"/>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('nombre')}"
+                         th:errors="*{nombre}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Descripcion</label>
+                    <textarea class="form-control" th:field="*{descripcion}" rows="2"
+                              placeholder="Descripcion del producto"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Precio ($) *</label>
+                        <input type="number" class="form-control" th:field="*{precio}"
+                               min="0" placeholder="0"/>
+                        <div class="text-danger small" th:if="${#fields.hasErrors('precio')}"
+                             th:errors="*{precio}"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Icono (emoji)</label>
+                        <input type="text" class="form-control" th:field="*{icono}"
+                               placeholder="🔨"/>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Categoria *</label>
+                    <select class="form-select" th:field="*{categoria}">
+                        <option value="">-- Seleccione --</option>
+                        <option value="Herramientas">Herramientas</option>
+                        <option value="Tornilleria">Tornilleria</option>
+                        <option value="Electrico">Electrico</option>
+                        <option value="Plomeria">Plomeria</option>
+                        <option value="Pintura">Pintura</option>
+                        <option value="Seguridad">Seguridad</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('categoria')}"
+                         th:errors="*{categoria}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ruta imagen</label>
+                    <input type="text" class="form-control" th:field="*{imagen}"
+                           placeholder="Ej: martillo.png"/>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-save"></i> Guardar
+                    </button>
+                    <a th:href="@{/productos}" class="btn btn-secondary">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
